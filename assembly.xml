@@ -1,0 +1,44 @@
+<assembly xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2"
+          xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2 http://maven.apache.org/xsd/assembly-1.1.2.xsd">
+
+    <id>bin</id>
+
+    <formats>
+        
+        <format>dir</format>
+        
+        <format>zip</format>
+        
+    </formats>
+
+    <baseDirectory></baseDirectory>
+
+    <!-- Adds dependencies to distribution package under lib directory -->
+    <dependencySets>
+        <dependencySet>
+            <useProjectArtifact>true</useProjectArtifact>
+            <outputDirectory>lib</outputDirectory>
+            <unpack>false</unpack>
+            <directoryMode>0755</directoryMode>
+            <fileMode>0644</fileMode>
+        </dependencySet>
+    </dependencySets>
+
+
+    <fileSets>
+        <fileSet>
+            <directory>${project.basedir}/src/main/deploy</directory>
+            <includes>
+                <include>ami-cleaner</include>
+            </includes>
+            <outputDirectory>.</outputDirectory>
+            <directoryMode>0750</directoryMode>
+            <fileMode>0750</fileMode>
+            <filtered>true</filtered>
+            <lineEnding>lf</lineEnding>
+        </fileSet>
+
+    </fileSets>
+
+</assembly>
